@@ -1,0 +1,8 @@
+## 1. ¿Qué duele hoy? (Contexto y Problema)
+El dolor principal es que el cálculo de nómina quincenal para 200 empleados es un proceso pesado que debe ser exacto. Un error afecta directamente el salario de una persona real. Además, el corte de nómina genera un reto arquitectónico crítico: procesa a todos los empleados con todos sus registros por lotes y, mientras corre este proceso pesado, los empleados siguen entrando a consultar sus horas. Si no se separa la carga transaccional de la analítica, el sistema puede bloquearse o ralentizarse.
+
+## 2. ¿Quién sufre ese dolor? (Usuarios Afectados)
+Principalmente los **empleados** (quienes sufren las consecuencias de errores en sus salarios o la imposibilidad de consultar sus horas y desprendibles durante el corte). También lo sufre el **contador** y el **jefe de personal**, quienes deben garantizar que el proceso de liquidación sea exacto y que los desprendibles se generen y envíen correctamente por correo.
+
+## 3. ¿Qué pasa si el sistema se cae una hora? (Disponibilidad)
+El impacto depende totalmente del momento de la caída. Si el sistema se cae una hora durante un día normal, el impacto es moderado: los empleados no podrán registrar su entrada/salida ni consultar sus horas. Sin embargo, si el sistema se cae o el proceso falla a la mitad durante el cierre quincenal (liquidación), el impacto es altísimo: se retrasa el pago del salario de 200 personas reales. Esto obliga a que el sistema sea capaz de retomar la liquidación desde donde falló sin duplicar los pagos.
